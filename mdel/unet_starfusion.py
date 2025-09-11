@@ -45,7 +45,6 @@ class EdgeEnhance(nn.Module):
         )
 
     def forward(self, x):
-        # 使用 Laplacian 构造简单边缘提示（或 Sobel 可选）
         edge = x - F.avg_pool2d(x, 3, stride=1, padding=1)
         return self.conv(x + edge)
 
@@ -266,3 +265,4 @@ class UNetStarFusion(nn.Module):
         x = self.outc(x)
 
         return x
+
