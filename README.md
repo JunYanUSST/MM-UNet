@@ -11,6 +11,6 @@ M²-UNet integrates:
 ---
 ## 🚀 Quick Start
 ```bash
-git clone https://github.com/450907169/M2-UNet.git
+git clone https://github.com/JunYanUSST/M2-UNet.git
 cd M2-UNet
 python train.py 
