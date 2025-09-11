@@ -17,14 +17,12 @@ class SimAM(nn.Module):
         n = w * h - 1
         x_mean = x.mean(dim=[2, 3], keepdim=True).detach()
         x_minus_mu_square = (x - x_mean).pow(2)
-        # var = x_minus_mu_square.sum(dim=[2, 3], keepdim=True) / n + self.e_lambda
-        # y = x_minus_mu_square / (4 * var) + 0.5
-        # 防止除零和负值
+        
         var = (x_minus_mu_square.sum(dim=[2, 3], keepdim=True) / max(n, 1)) + self.e_lambda
-        var = var.clamp(min=1e-8)  # 确保方差不为零
-        # 限制计算范围
+        var = var.clamp(min=1e-8)  
+       
         y = (x_minus_mu_square / (4 * var + 1e-8)) + 0.5
-        y = y.clamp(0, 1)  # 限制在 [0, 1] 范围内
+        y = y.clamp(0, 1)  
 
         out = x * self.activation(y)
         if not torch.isfinite(out).all():
@@ -45,7 +43,7 @@ class EdgeEnhance(nn.Module):
         )
 
     def forward(self, x):
-        # 使用 Laplacian 构造简单边缘提示（或 Sobel 可选）
+        
         edge = x - F.avg_pool2d(x, 3, stride=1, padding=1)
         return self.conv(x + edge)
 
@@ -264,5 +262,6 @@ class UNetStarFusion(nn.Module):
         x = self.up3(x, x2)
         x = self.up4(x, x1)
         x = self.outc(x)
+
 
         return x
