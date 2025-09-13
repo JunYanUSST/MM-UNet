@@ -11,6 +11,6 @@ MM-UNet integrates:
 ---
 ## 🚀 Quick Start
 ```bash
-git clone https://github.com/JunYanUSST/M2-UNet.git
+git clone https://github.com/JunYanUSST/MM-UNet.git
 cd MM-UNet
 python train.py 
