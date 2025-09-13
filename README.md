@@ -1,7 +1,7 @@
-# M²-UNet: Ultrasound Image Segmentation
+# MM-UNet: Ultrasound Image Segmentation
 
 This repository provides the official PyTorch implementation of **M²-UNet**, a novel network for ultrasound medical image segmentation.  
-M²-UNet integrates:
+MM-UNet integrates:
 - **Multiplicative Residual Interaction (MRI)** module – strengthens boundary modeling through cross-scale feature interaction.  
 - **Multi-Scale Attention Edge-Enhancement (MSAE)** module – improves sensitivity to multi-scale lesions and boundary preservation.  
 
